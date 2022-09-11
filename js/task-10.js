@@ -11,17 +11,21 @@ btnDestroyEl.addEventListener('click', onBtnDestroyClick);
 function onBtnCreateClick() {
   const inputEl = document.querySelector('input');
   const inputValue = Number(inputEl.value);
-    createBoxes(inputValue);
-  };
+  boxesEl.insertAdjacentHTML('beforeend', createBoxes(inputValue));
+};
+ 
 
   function onBtnDestroyClick() {
     boxesEl.innerHTML = '';
   };
 
   function createBoxes(amount) {
+    const markup = []; {
     for (let i = 0; i < amount; i += 1) {
-      const markup = `<div style = 'background-color: ${getRandomHexColor()}; width: ${30 + i * 10}px; height:${30 + i * 10}px'></div>`;
-      boxesEl.insertAdjacentHTML('beforeend', markup);
+      const markupEl = `<div style = 'background-color: ${getRandomHexColor()}; width: ${30 + i * 10}px; height:${30 + i * 10}px'></div>`;
+      markup.push(markupEl);
     }
+    }
+    return markup.join(' ');
   };
 
